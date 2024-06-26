@@ -13,7 +13,7 @@ public class Horizon_Limit_Listener implements Listener {
     private static double z_min_distance;
     private static double z_max_distance;
 
-    public static void setDistance(double xmin,double xman,double zmin,double zmax){
+    public static void setDistance(double xmin, double xman, double zmin, double zmax) {
         Horizon_Limit_Listener.x_min_distance = xmin;
         Horizon_Limit_Listener.x_max_distance = xman;
         Horizon_Limit_Listener.z_min_distance = zmin;
@@ -21,27 +21,27 @@ public class Horizon_Limit_Listener implements Listener {
     }
 
     @EventHandler
-    public void onMove(PlayerMoveEvent event){
+    public void onMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
         Vector player_vector = player.getVelocity();
         double x = player.getLocation().getX();
         double z = player.getLocation().getZ();
 
-        if(x<x_min_distance){
-            player.setVelocity(player_vector.add(new Vector(1,0,0)));
+        if (x < x_min_distance) {
+            player.setVelocity(player_vector.add(new Vector(1, 0, 0)));
         }
 
-        if(x_max_distance<x){
-            player.setVelocity(player_vector.add(new Vector(-1,0,0)));
+        if (x_max_distance < x) {
+            player.setVelocity(player_vector.add(new Vector(-1, 0, 0)));
         }
 
-        if(z<z_min_distance){
-            player.setVelocity(player_vector.add(new Vector(0,0,1)));
+        if (z < z_min_distance) {
+            player.setVelocity(player_vector.add(new Vector(0, 0, 1)));
         }
 
-        if(z_max_distance<z){
-            player.setVelocity(player_vector.add(new Vector(0,0,-1)));
+        if (z_max_distance < z) {
+            player.setVelocity(player_vector.add(new Vector(0, 0, -1)));
         }
     }
 

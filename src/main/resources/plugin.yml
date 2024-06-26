@@ -1,17 +1,17 @@
 name: LobbyFlyPlugin
 version: '${project.version}'
 main: com.github.Shin_Ideal.LobbyFlyPlugin.LobbyFlyPlugin
-api-version: 1.8
+api-version: 1.21
 authors: [ Shin ]
 
 commands:
   fly:
     description: ToggleFly
-    aliases: [togglefly]
+    aliases: [ togglefly ]
     permission: lobbyflyplugin.fly
   flymanage:
     description: ManageFlyPlugin
-    aliases: [fm]
+    aliases: [ fm ]
     permission: lobbyflyplugin.flymanage
 
 permissions:

@@ -16,21 +16,21 @@ public class Join_Fly_Listener implements Listener {
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event){
+    public void onJoin(PlayerJoinEvent event) {
         LobbyFlyPlugin plugin = LobbyFlyPlugin.getPlugin();
         Player player = event.getPlayer();
 
-        if(player.hasPermission("lobbyflyplugin.fly")){
+        if (player.hasPermission("lobbyflyplugin.fly")) {
             player.setAllowFlight(true);
             player.setFlying(true);
-            new BukkitRunnable(){
+            new BukkitRunnable() {
                 @Override
-                public void run(){
-                    if(add_y_location!=0) {
+                public void run() {
+                    if (add_y_location != 0) {
                         player.teleport(player.getLocation().add(0, add_y_location, 0));
                     }
                 }
-            }.runTaskLater(plugin,5L);
+            }.runTaskLater(plugin, 5L);
         }
     }
 

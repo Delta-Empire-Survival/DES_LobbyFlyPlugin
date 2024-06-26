@@ -9,9 +9,9 @@ public class LobbyFlyPlugin extends JavaPlugin {
     private static LobbyFlyPlugin thisPlugin;
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         getLogger().info("Enable");
-        thisPlugin=this;
+        thisPlugin = this;
         ConfigManager.Init();
         ListenerManager.Init();
 
@@ -20,7 +20,7 @@ public class LobbyFlyPlugin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable(){
+    public void onDisable() {
         ListenerManager.Fina();
         getLogger().info("Disable");
     }

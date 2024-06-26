@@ -10,11 +10,11 @@ public class FlyManage implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length==0){
+        if (args.length == 0) {
             sendHelp(sender);
             return true;
-        }else {
-            switch (args[0]){
+        } else {
+            switch (args[0]) {
                 case "help":
                     sendHelp(sender);
                     break;
@@ -32,7 +32,7 @@ public class FlyManage implements CommandExecutor {
         return true;
     }
 
-    private void sendHelp(CommandSender sender){
+    private void sendHelp(CommandSender sender) {
         sender.sendMessage("/flymanage <help>");
         sender.sendMessage("/flymanage <reload>");
     }

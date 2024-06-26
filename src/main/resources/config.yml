@@ -30,3 +30,4 @@ back-from-void:
   add-x: 0.5
   add-y: 0
   add-z: 0.5
+  y-limit: -64
