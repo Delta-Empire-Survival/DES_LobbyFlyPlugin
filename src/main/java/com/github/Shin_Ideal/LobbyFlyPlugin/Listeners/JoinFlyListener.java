@@ -1,37 +1,42 @@
 package com.github.Shin_Ideal.LobbyFlyPlugin.Listeners;
 
 import com.github.Shin_Ideal.LobbyFlyPlugin.LobbyFlyPlugin;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class Join_Fly_Listener implements Listener {
+public class JoinFlyListener implements Listener {
 
-    private static double add_y_location;
+    private final LobbyFlyPlugin Instance;
+    private final Configuration config;
 
-    public static void setAdd_y_location(double add_y_location) {
-        Join_Fly_Listener.add_y_location = add_y_location;
+    public JoinFlyListener() {
+        Instance = LobbyFlyPlugin.getInstance();
+        config = Instance.getConfig();
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        LobbyFlyPlugin plugin = LobbyFlyPlugin.getPlugin();
-        Player player = event.getPlayer();
+        if (!config.getBoolean("join-fly.enable")) {
+            return;
+        }
 
+        Player player = event.getPlayer();
         if (player.hasPermission("lobbyflyplugin.fly")) {
             player.setAllowFlight(true);
             player.setFlying(true);
             new BukkitRunnable() {
                 @Override
                 public void run() {
+                    double add_y_location = config.getDouble("join-fly.add-y-location");
                     if (add_y_location != 0) {
                         player.teleport(player.getLocation().add(0, add_y_location, 0));
                     }
                 }
-            }.runTaskLater(plugin, 5L);
+            }.runTaskLater(Instance, 5L);
         }
     }
-
 }
